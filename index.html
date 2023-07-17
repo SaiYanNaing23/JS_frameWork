@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue_Pratice</title>
+
+</head>
+<body>
+    <div id="app">
+        <p v-if="fruit === 'mango'">Mango</p>
+        <p v-else-if="fruit === 'orange'">Orange</p>
+        <ul class="list">
+            <li v-for="fruits in fruit" class="list">{{fruits}}</li>
+        </ul>
+        <p v-show="isShow">Show</p>
+        <input  type="text" v-model="inputText"></input>
+        <p>{{inputText}}</p>
+        <button v-on:click="onAlert()">{{counter}}</button>
+        <p v-show="isEven">This is even click you will see</p>
+        <!-- <input type="text" @click.once="onAlert()" v-on:keydown.enter="onAlert()"> -->
+        <select v-model="char">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+        </select>
+        {{char}}
+
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data: function(){
+                return{
+                   inputText: "Hello World",
+                   fruit : ["orange","apple","mango"],
+                   isShow : false,
+                   counter:0,
+                   char: "A"
+                }
+            },
+            methods:{
+               onAlert() {
+                this.counter++
+                return console.log("nice");
+               }
+            },
+            computed: {
+                isEven(){
+                    return this.counter%2 === 0;
+                }
+            }
+})
+    </script>
+</body>
+</html>
